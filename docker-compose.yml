@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  grafana:
+    image: grafana/grafana-oss:latest
+    ports:
+     - 3000:3000
+
+  redis:
+    container_name: rts
+    image: redislabs/redistimeseries
+    ports:
+      - 6379:6379
