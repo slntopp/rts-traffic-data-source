@@ -1,5 +1,0 @@
-version: v1
-name: github.com/slntopp/rts-traffic-data-source
-deps:
-  - buf.build/googleapis/googleapis
-  - buf.build/grpc-ecosystem/grpc-gateway

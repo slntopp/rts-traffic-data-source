@@ -10,15 +10,3 @@ services:
     image: redislabs/redistimeseries
     ports:
       - 6379:6379
-  
-  sample:
-    container_name: sample-server
-    image: innius/sample-grpc-server
-
-  test-server:
-    container_name: test-server
-    image: ghcr.io/slntopp/rts-traffic-data-source:test
-    environment:
-      DEBUG: "true"
-    volumes:
-     - ./:/app
