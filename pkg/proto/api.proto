@@ -1,0 +1,16 @@
+syntax = "proto3";
+package grafana.json_datasource;
+
+option go_package = "github.com/slntopp/rts-traffic-data-source;rts_traffic_data_source";
+
+import "google/api/annotations.proto";
+
+message TestR {}
+
+service GrafanaJSONDataSourceService {
+    rpc Test(grafana.json_datasource.TestR) returns (grafana.json_datasource.TestR) {
+        option(google.api.http) = {
+            get: "/"
+        };
+    };
+}

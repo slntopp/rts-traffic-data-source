@@ -5,7 +5,7 @@ import (
 	"net"
 	"os"
 
-	pb "github.com/slntopp/rts-traffic-data-source/pkg/grpc-data-source/proto"
+	pb "github.com/slntopp/rts-traffic-data-source/pkg/proto"
 	"github.com/slntopp/rts-traffic-data-source/pkg/server"
 	"github.com/slntopp/rts-traffic-data-source/pkg/timeseries"
 	"github.com/spf13/pflag"
@@ -60,7 +60,7 @@ func main() {
 		log.Fatal("Failed to listen", zap.String("address", ":8080"), zap.Error(err))
 	}
 	srv := grpc.NewServer()
-	pb.RegisterGrafanaQueryAPIServer(srv, server.NewGrafanaDSServer(log, rts))
+	pb.RegisterGrafanaJSONDataSourceServiceServer(srv, server.NewGrafanaDSServer(log, rts))
 
 	if err := srv.Serve(lis); err != nil {
 		log.Fatal("Failed to serve gRPC", zap.Error(err))

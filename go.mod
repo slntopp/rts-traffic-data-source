@@ -4,9 +4,11 @@ go 1.17
 
 require (
 	github.com/RedisTimeSeries/redistimeseries-go v1.4.4
+	github.com/grpc-ecosystem/grpc-gateway/v2 v2.7.3
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.10.1
 	go.uber.org/zap v1.20.0
+	google.golang.org/genproto v0.0.0-20220118154757-00ab72f36ad5
 	google.golang.org/grpc v1.44.0
 	google.golang.org/protobuf v1.27.1
 )
@@ -28,7 +30,6 @@ require (
 	golang.org/x/net v0.0.0-20210813160813-60bc85c4be6d // indirect
 	golang.org/x/sys v0.0.0-20211210111614-af8b64212486 // indirect
 	golang.org/x/text v0.3.7 // indirect
-	google.golang.org/genproto v0.0.0-20211208223120-3a66f561d7aa // indirect
 	gopkg.in/ini.v1 v1.66.2 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
