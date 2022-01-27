@@ -6,16 +6,14 @@ import (
 	"os"
 
 	pb "github.com/slntopp/rts-traffic-data-source/pkg/grpc-data-source/proto"
+	"github.com/slntopp/rts-traffic-data-source/pkg/server"
+	"github.com/slntopp/rts-traffic-data-source/pkg/timeseries"
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"google.golang.org/grpc"
 )
-
-type GrafanaDSServer struct {
-	pb.UnimplementedGrafanaQueryAPIServer
-}
 
 var (
 	log *zap.Logger
@@ -54,13 +52,15 @@ func main() {
 		_ = log.Sync()
 	}()
 	log.Info("Starting Service")
+
+	rts := timeseries.NewTSClient(log, redisHost)
 	
 	lis, err := net.Listen("tcp", ":8080")
 	if err != nil {
 		log.Fatal("Failed to listen", zap.String("address", ":8080"), zap.Error(err))
 	}
 	srv := grpc.NewServer()
-	pb.RegisterGrafanaQueryAPIServer(srv, &GrafanaDSServer{})
+	pb.RegisterGrafanaQueryAPIServer(srv, server.NewGrafanaDSServer(log, rts))
 
 	if err := srv.Serve(lis); err != nil {
 		log.Fatal("Failed to serve gRPC", zap.Error(err))
