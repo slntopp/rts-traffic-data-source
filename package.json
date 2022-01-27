@@ -1,0 +1,12 @@
+{
+  "name": "rts-traffic-data-source",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Mik <info@slnt-opp.xyz>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "express": "^4.17.2",
+    "redistimeseries-js": "^2.3.1"
+  }
+}

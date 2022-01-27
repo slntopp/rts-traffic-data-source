@@ -10,3 +10,14 @@ services:
     image: redislabs/redistimeseries
     ports:
       - 6379:6379
+  
+  test-server:
+    container_name: test-server
+    image: node:latest
+    entrypoint: node /app
+    environment:
+      REDIS_HOST: redis://rts:6379
+    volumes:
+      - ./.:/app
+    ports:
+      - 8000:8000
