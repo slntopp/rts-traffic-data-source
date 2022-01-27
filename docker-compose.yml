@@ -10,3 +10,7 @@ services:
     image: redislabs/redistimeseries
     ports:
       - 6379:6379
+  
+  sample:
+    container_name: sample-server
+    image: innius/sample-grpc-server
