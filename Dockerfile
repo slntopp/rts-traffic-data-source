@@ -4,4 +4,4 @@ ADD . /app
 WORKDIR /app
 RUN yarn
 
-ENTRYPOINT ['node', '/app']
+ENTRYPOINT ["node", "/app"]
