@@ -13,11 +13,8 @@ services:
   
   test-server:
     container_name: test-server
-    image: node:latest
-    entrypoint: node /app
+    image: ghcr.io/slntopp/rts-traffic-data-source:latest
     environment:
       REDIS_HOST: redis://rts:6379
-    volumes:
-      - ./.:/app
     ports:
       - 8000:8000
